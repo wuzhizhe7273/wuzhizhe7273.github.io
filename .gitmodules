@@ -1,0 +1,12 @@
+[submodule "themes/FixIt"]
+	path = themes/FixIt
+	url = https://gitclone.com/github.com/Lruihao/FixIt.git
+[submodule "themes/dimension"]
+	path = themes/dimension
+	url = https://gitclone.com/github.com/your-identity/hugo-theme-dimension.git
+[submodule "themes/ananke"]
+	path = themes/ananke
+	url = https://gitclone.com/github.com/theNewDynamic/gohugo-theme-ananke.git
+[submodule "themes/stack"]
+	path = themes/stack
+	url = https://gitclone.com/github.com/CaiJimmy/hugo-theme-stack/
