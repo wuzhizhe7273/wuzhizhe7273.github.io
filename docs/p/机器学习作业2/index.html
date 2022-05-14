@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='大三下学期机器学习课第二次作业'><title>机器学习作业2</title>
+
+<link rel='canonical' href='https://example.com/p/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A2/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='机器学习作业2'>
+<meta property='og:description' content='大三下学期机器学习课第二次作业'>
+<meta property='og:url' content='https://example.com/p/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A2/'>
+<meta property='og:site_name' content='Wanderer Fantansy'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='机器学习' /><meta property='article:tag' content='作业' /><meta property='article:published_time' content='2022-05-04T21:37:00&#43;02:00'/><meta property='article:modified_time' content='2022-05-04T21:37:00&#43;02:00'/><meta property='og:image' content='https://example.com/image/seele.png' />
+<meta name="twitter:title" content="机器学习作业2">
+<meta name="twitter:description" content="大三下学期机器学习课第二次作业"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://example.com/image/seele.png' />
+    </head>
+    <body class="
+    article-page 
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        on-phone--column extended
+    
+">
+    
+        <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu9d4d2c1ed5b9134359b968aee65a29c7_40797_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://example.com">Wanderer Fantansy</a></h1>
+        <h2 class="site-description">一个菜鸟的笔记</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/p/test3/'>
+                
+                <span>测试文章</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>暗色模式</span>
+            </li>
+        
+    </ol>
+</aside>
+
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A2/">
+                
+                    <img src="/image/seele.png" loading="lazy" alt="Featured image of post 机器学习作业2" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BD%9C%E4%B8%9A/" >
+                作业
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A2/">机器学习作业2</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        大三下学期机器学习课第二次作业
+    </h3>
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">May 04, 2022</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <p><strong>1.说明线性模型得原理和实现过程，涉及公式推导。</strong>
+假定给定数据集$D={(x_i,y_i)}_{i=1}^m,x_i \in \mathbb{R}^N,y_i \in \mathbb{R}$,有$f(x_i)=w^Tx_i,w^T \in \mathbb{R}^m$.$f(x_i)$的值与$y_i$尽可能接近，我们称其为线性模型。$w^T$作为一个线性算子，对输入样本空间进行线性变换，将其映射到类别空间上，要求相似的样本在空间中距离更近，被分为一类。所以对于线性模型我们要求其输入样本在样本空间的分布是线性可分的。
+对于线性模型来说，我们一般会有一个性能评估指标，如线性回归的均方误差，对数几率回归的对数似然，线性判别分析的广义瑞利商。这些性能评价指标就是我们模型的优化指标，我们要选择模型的参数使这些优化指标达到最优。在限制了优化指标的最优条件时，我们就可以通过数学优化的方法求得线性模型的参数。</p>
+<p><strong>2.解释线性判别分析的原理，算法优缺点，可加图说明。</strong>
+线性判别分析( Linear Discriminant Analysis,简称LDA)是一种经典的线性学习方法，它的基本思想是将样本投影到一条直线上，使同类样本尽可能近，不同类样本之间的距离尽可能远。前者对应同类样本的协方差尽可能小，后者对应不同样本类别的投影中心的距离尽可能大。
+这里先定义几个符号：假设数据集为$D{(x_i,y_i)}<em>{i=1}^m,y_i \in {0,1},x_i \in \mathbb{R}^m,m \in \mathbb{N}^+$那么有$X_i,\mu_i,\Sigma_i$分别表示$i \in {0,1}$类样本的集合，均值向量，协方差矩阵,投影方向为$w$那么我们的目的就变为让$w^T\Sigma_0w+w^T\Sigma_1w$尽可能小，$||w^T\mu_0-w^T\mu_1 ||</em>{2}^{2}$尽可能大。整合一下目标变为$J=\frac{w^T(\mu_0-\mu_1)(\mu_0-\mu_1)^Tw}{w^T(\Sigma_0+\Sigma_1)w}$最大化。
+如果我们定义$S_w=\Sigma_0+\Sigma_1$为类内散度矩阵，$S_b=(\mu_0-\mu_1)(\mu_0-\mu_1)^T$为类间散度矩阵，则可变换到$J=\frac{w^TS_bw}{w_TS_ww}$，这里的J为广义瑞利商(在第一题中提过)。
+对于广义瑞利商，其优化目标为：
+$$
+\begin{aligned}
+\underset{\pmb{w}}{min} \quad &amp;-\pmb{w}^T\pmb{b}_b\pmb{w}\
+s.t. \quad &amp;\pmb{w}^T\pmb{S}_w\pmb{w}=1
+\end{aligned}
+$$
+由拉格朗日乘子法可以求得$\pmb{S}_b\pmb{w}=\lambda\pmb{S}_w\pmb{w}$, $\pmb{S}_b\pmb{w}$的方向恒为$\pmb{\mu}_0-\pmb{\mu}_1$,则$\pmb{w}=\pmb{S}_w^{-1}(\pmb{\mu}_0-\pmb{\mu}_1)$。之后利用$\pmb{w}^T\pmb{\mu}$对特征向量进行投影即可。
+优点：线性判别分析是有有监督的，能很好得反应样本间差异
+缺点：局限性大，受样本种类限制，投影空间最多为n-1维。</p>
+<p><strong>3.以前三层神经网络为例，说明误差逆传播算法的计算原理。</strong></p>
+<p>假设有一个三层神经网络，如下图:
+<img src="/image/MLhw/1.jpg" alt=""  /></p>
+<p>对于训练样例$(\pmb{x}<em>k,\pmb{y}<em>k)$,假定输出为$\pmb{\hat{y}<em>k}=(\hat{y}<em>1^k,\hat{y}<em>2^k,\cdots,\hat{y}<em>l^k)$,即$\hat{\pmb{y}}<em>j^k=f(\beta_j-\theta_j)$,假设使用均方误差作为评估准则，$E_k=\frac{1}{2}\sum</em>{j=1}^l(\hat{y}<em>j^k-y_j^k)^2$。
+对于误差，我们知道其在相对于各参数负梯度方向上下降最快，所以接下来我们要求误差相对于各参数的梯度，为简化计算，我们使用$w</em>{hj},\theta_j,\upsilon</em>{ih},\gamma_h$举例计算，其中$\theta_j,\gamma_h$分别代表输出层第$j$个神经元，隐含第$h$个神经元的阈值，也可以叫偏置。
+依据链式法则：
+$$
+\begin{aligned}
+&amp;\Delta w</em>{hj}=-\eta\frac{\partial E_k}{\partial w</em>{hj}}=-\eta\frac{\partial E_k}{\partial \hat{y_k}}\frac{\partial  \hat{y_k}}{\partial \beta_j}\frac{\partial  \beta_j}{\partial w</em>{hj}}\
+&amp;\Delta \theta_j=-\eta \frac{\partial E_k}{\partial \theta_j}=-\eta\frac{\partial E_k}{\partial \hat{y_k}}\frac{\partial  \hat{y_k}}{\partial \beta_j}\frac{\partial  \beta_j}{\partial \theta_j}\
+&amp;\Delta \upsilon</em>{ih}=-\eta \frac{\partial E_k}{\partial b_h}\frac{b_h}{\alpha_h}\frac{\alpha_h}{\upsilon</em>{ih}}\
+&amp;\Delta \gamma_h=-\eta \frac{\partial E_k}{\partial b_h}\frac{b_h}{\alpha_h}\frac{\alpha_h}{\gamma_h}\
+&amp;\frac{\partial E_k}{\partial b_h}= \sum_{j=1}^l\frac{\partial E_k}{\partial \beta_j}\frac{\beta_j}{\partial b_h}
+\end{aligned}
+$$
+假设$\upsilon$为任意参数，则参数更新方式为$\upsilon\leftarrow\upsilon+\Delta \upsilon$按照以上公式更新模型参数，模型达到评估要求后，即可进行预测。</p>
+<p><strong>4.解释支持向量机的原理和实现过程，优缺点，适用情况，不同参数的作用，说明自己的学习感悟</strong>
+从集合角度看，支持向量机是找一个对于线性可分的数据集正负样本都远的超平面。
+我们用$\pmb{w}^T\pmb{x}+b=0$,其中$\pmb{w}=(w_1;w_2;&hellip;;w_d)$为超平面法向量，决定了超平面的方向，b为位移项，决定了超平面和原点之间的距离。
+样本空间中任意一点到超平面的距离表示为：
+$$
+\gamma=\frac{|\pmb{w}^T\pmb{x}+b|}{||\pmb{w}||}
+$$
+使用$
+\frac{y_{min}(\pmb{w}^T\pmb{x}<em>{min}+b)}{||\pmb{x}||}
+$表示数据集划分的几何距离。
+那么解优化问题：
+$$
+\begin{aligned}
+\max</em>{\pmb{w},b}\quad&amp;\frac{y_{min}(\pmb{w}^T\pmb{x}<em>{min}+b)}{||\pmb{w}||}\
+s.t.\quad&amp;y_i(\pmb{w}^T\pmb{x}<em>i+b)\geqslant y</em>{min}(\pmb{w}^T\pmb{x}</em>{min}+b)
+\end{aligned}
+$$
+为使其解唯一，限制$\frac{y_{min}(\pmb{w}^T\pmb{x}<em>{min}+b)}{||\pmb{x}||}=1$，得：
+$$
+\begin{aligned}
+\max</em>{\pmb{w},b}\quad&amp;\frac{1}{||\pmb{w}||}\
+s.t.\quad&amp;y_i(\pmb{w}^T\pmb{x}_i+b)\geqslant 1
+\end{aligned}
+$$
+解这个优化问题得$\pmb{w}$和$b$,确定超平面。（真不会解，解法空着了）
+使用：
+$$
+y=sign(\pmb{w}^T+b) 
+$$
+即可对样本进行分类。
+优点：支持向量机是一种小样本学习方法，只有少数几个样本起作用，避免了维数灾难，鲁棒性好。
+缺点：对于分线性可分得数据集需要借助核函数，核函数的选择是一个未解决的问题。对于大规模训练耗时大，解决多分类问题存在困难。</p>
+<p><strong>5.在夏季，某公园男性穿凉鞋的概率为$\frac{2}{5}$,女性穿凉鞋的概率为$\frac{4}{5}$，并且该公园中男女比例通常为2:1,问题：若你在公园中随机遇到一个穿凉鞋的人，请问他的性别为男性或女性的概率分别为多少，解释计算原理。</strong></p>
+<p>贝叶斯公式：
+$$
+P(A_i|B)=\frac{P(B|A_i)P(A_i)}{\sum_j P(B|A_j)P(Aj)}
+$$
+假设事件A表示遇到的人是男或女,事件B表示遇到的人穿凉鞋。
+则依以上公式有：
+$$
+\begin{aligned}
+P(男|穿)&amp;=\frac{P(穿|男)P(男)}{P(穿|男)P(男)+P(穿|女)P(女)}\
+&amp;=\frac{\frac{2}{5}\times \frac{2}{3}}{\frac{2}{5}\times\frac{2}{3}+\frac{4}{5}\times\frac{1}{3}}=\frac{1}{2}=0.5\
+P(女|穿)&amp;=1-P(男|穿)=0.5
+\end{aligned}
+$$
+所以在如题所述的公园遇到一个穿凉鞋的人，他(她)是男(女)性的概率为0.5。</p>
+<p><strong>6.说明集成学习算法的主要类别，以Adaboost和随机森林为例，说明算法原理和实现过程</strong></p>
+<p>集成学习通过构建多个学习器并将其结合来完成学习任务的方法。可以根据结合策略可分为串行序列化方法和并行结合方法，前者以Bossting方法为代表，个体学习器之间常常存在强依赖关系，后者则以Bagging和随机森林为代表，个体学习器之间不存在强依赖。
+关于Adaboost:
+此算法先从初始训练集训练出一个基学习器，在根据这个基学习器的预测结果来调整样本分布，是之前错分的样本在后续学习器的训练样本在后续受到更多关注，然后训练下一个学习器，如此重复，直至学习器数目达到事先指定的$T$,最后将T个学习器进行加权结合。
+集成学习器表示为：$H(x)=\sum_{t=1}^T\alpha_t h_t(x)$,其中$h_t$为个体学习器，$\alpha_t$为其对应的权重。
+学习器需要最小化损失函数$\mathcal{L}(H|\mathcal{D})=\mathbb{E}<em>{x\sim \mathcal{D}}[e^{-f(x)H(x)}]$
+前向分布求解：每轮求解一个学习器的$h_t$和权重$\alpha_t$,第t轮优化目标
+$$
+(\alpha_t,h_t)=argmin</em>{\alpha,h}\mathcal{L}(H_{t-1}+\alpha h|\mathcal{D})
+$$
+根据指数损失函数的定义式，有
+$$
+\begin{aligned}
+\mathcal{L}(H_{t-1}+\alpha h|\mathcal{D})&amp;=\mathbb{E}<em>{x \sim \mathcal{D}}[e^{-f(x)(H</em>{t-1}(x)+\alpha h(x))}]\
+&amp;=\sum_{i=1}^{|\mathcal{D}|}\mathcal{D}(x_i)e^{-f(x_i)(H_{t-1}(x_i)+\alpha h(x_i))}\
+&amp;=\sum_{i=1}^{|\mathcal{D}|}\mathcal{D}(x_i)e^{-f(x_i)H_{t-1}(x_i)}e^{-f(x_i)\alpha h(x_i)}
+\end{aligned}
+$$
+因为$f(x_i)$和$h(x_i)$仅可取值{-1,1}，可以推得
+$$
+\begin{aligned}
+\mathcal{L}(H_{t-1}+\alpha h|\mathcal{D})&amp;=\sum_{i=1}^{|D|}\mathcal{D}(x_i)e^{-f(x_i)H_{t-1}(x_i)}(e^{-\alpha}+(e^{\alpha}-e^{-\alpha})\mathbb{I}(f(x_i)\neq h(x_i)))\
+&amp;=\sum_{i=1}^{|D|}\mathcal{D}(x_i)e^{-f(x_i)H_{t-1}(x_i)}e^{-\alpha}+\sum_{i=1}^{|D|}\mathcal{D}(x_i)e^{-f(x_i)H_{t-1}(x_i)}(e^{\alpha}-e^{-\alpha})\mathbb{I}(f(x_i)\neq h(x_i))
+\end{aligned}
+$$
+做一个简单的符号替换，令$\mathcal{D}<em>t^{&rsquo;}(x_i)=\mathcal{D}(x_i)e^{-f(x_i)H</em>{t-1}(x_i)}$,化简得
+$$
+\mathcal(L)(H_{t-1}+\alpha h|\mathcal{D})=e^{-\alpha}\sum_{i=1}^{|D|}\mathcal{D}<em>t^{&rsquo;}(x_i)+(e^{\alpha}-e^{- \alpha})\sum</em>{i=1}^{|D}\mathcal{D}<em>t^{&rsquo;}(x_i)\mathbb{I}(f(x_i)\neq h(x_i))
+$$
+忽略和$h_t$无关的项
+$$
+h_t=argmin_h(e^{\alpha}-e^{-\alpha})\sum</em>{i=1}^{|D|}\mathcal{D_t{&rsquo;}(x_i)}\mathbb{I}(f(x_i)\neq h(x_i))
+$$
+由于$\alpha&gt;\frac{1}{2}$,所以$e^{\alpha}-e^{-\alpha}&gt;0$恒成立。
+求解目标简化为
+$$
+h_t=argmin_h\sum_{i=1}^{|D}\mathcal{D}<em>t^{&rsquo;}(x_i)\mathbb{I}(f(x_i)\neq h(x_i))
+$$
+上式中$D</em>{t}^{&rsquo;}(x_i)$可以看作一个分布，我们将其规范化$\mathcal{D}<em>{t}(x_i)=\frac{\mathcal{D}<em>t^{&rsquo;}(x_i)}{\sum</em>{i=1}^{|D|}\mathcal{D}<em>t^{&rsquo;}(x_i)}$。
+第t轮的样本权重可以通过第t-1轮的样本权重计算。
+$$
+\begin{aligned}
+\mathcal{D}</em>{t+1}(x_i)&amp;=\mathcal{D}(x_i)e^{-f(x_i)H_t(x_i)}\&amp;=\mathcal{D}(x_i)e^{-f(x_i)(H</em>{t-1}(x_i)+\alpha_t h_t(x_i))}\
+&amp;=\mathcal{D}(x_i)e^{-f(x_i)H_{t-1}(x_i)}e^{-f(x_i)\alpha_t h_t(x_i)}\
+&amp;=\mathcal{D}(x_i)e^{-f(x_i)\alpha_t h_t(x_i)}
+\end{aligned}
+$$
+接下来求解学习器$h_t$权重$\alpha_t$。损失函数$\mathcal{L}(H_{t-1}+\alpha h|D)$对$\alpha$求导有：
+$$
+\begin{aligned}
+\frac{\partial \mathcal{L}(H_{t-1}+\alpha h_t|D)}{\partial \alpha}&amp;=\frac{\partial(e^{-\alpha}\sum_{i=1}^{|D|}\mathcal{D}<em>t^{&rsquo;}(x_i)+(e^{\alpha}-e^{-\alpha})\sum</em>{i=1}^{|D|}\mathcal{D}<em>{t}^{&rsquo;}(x_i)\mathbb{I}(f(x_i)\neq h(x_i)))}{\partial \alpha}\
+&amp;=-e^{- \alpha}\sum</em>{i=1}^{|D|}\mathcal{D}<em>t^{&rsquo;}(x_i)+(e^{\alpha}+e^{- \alpha})\sum</em>{i=1}^{|D|}\mathcal{D}<em>{t}^{&rsquo;}(x_i)\mathbb{I}(f(x_i)\neq h(x_i))
+\end{aligned}
+$$
+令导数为0，移向得：
+$$
+\begin{aligned}
+\frac{e^{- \alpha}}{e^{\alpha}+e^{- \alpha}}&amp;=\frac{\sum</em>{i=1}^{|D|}\mathcal{D}<em>{t}^{&rsquo;}(x_i)\mathbb{I}(f(x_i) \neq h(x_i))}{\sum</em>{i=1}^{|D|}\mathcal{D}<em>{t}^{&rsquo;}(x_i)}\
+&amp;=\sum</em>{i=1}^{|D|}\frac{\mathcal{D}(x_i)}{Z_t}\mathbb{I}(f(x_i)\neq h(x_i))\
+&amp;=\sum_{i=1}^{|D|}\mathcal{D}<em>t(x_i)\mathbb{I}(f(x_i)\neq h(x_i))\
+&amp;=\mathbb{E}</em>{x\sim \mathcal{D}_t}[\mathbb{I}f(x_i)\neq h(x_i)]\
+&amp;=\epsilon_t
+\end{aligned}
+$$
+求解上式可得
+$$
+\alpha_t=\frac{1}{2}\ln(\frac{1-\epsilon_t}{\epsilon_t})
+$$
+以上即为参数求解步骤，算法实现如下：
+输入：</p>
+<ul>
+<li>训练集：$D={(x_1,y_1),(x_2,y_2),\cdots,(x_m,y_m)}$</li>
+<li>基学习算法$\mathcal{E}$</li>
+<li>训练轮数$T$</li>
+</ul>
+<p>过程：</p>
+<ul>
+<li>$\mathcal{D}_1(x)=\frac{1}{m}$</li>
+<li>for t=1,2,&hellip;T do
+<ul>
+<li>$h_t=\mathcal{E}(D,\mathcal{D}_t)$</li>
+<li>$\epsilon=P_{x \sim \mathcal{D_t}}(h_t(x)\neq f(x))$</li>
+<li>if $\epsilon_t&gt;0.5$ then break</li>
+<li>$\alpha_t=\frac{1}{2}\ln(\frac{1-\epsilon_t}{\epsilon_t})$</li>
+<li>按照上面的公式从$\mathcal{D}<em>t$求得$\mathcal{D}</em>{t+1}$</li>
+</ul>
+</li>
+<li>end for</li>
+</ul>
+<p>输出：
+$F(x)=sign(\sum_{t=1}^{T}\alpha_t h_t(x))$</p>
+<p>关于随机森林：
+Bagging和随机森林都是基学习器为决策树的算法，随机森林对基学习器进行训练时，都用自主采样法对数据集进行采样生成新的训练集并随机选择属性，这样的扰动大大提升了学习器的性能。
+具体实现如下：
+输入：</p>
+<ul>
+<li>训练集：$D={(x_1,y_1),(x_2,y_2),\cdots,(x_m,y_m)}$</li>
+<li>基学习算法$\mathcal{E}$</li>
+<li>训练轮数$T$</li>
+</ul>
+<p>过程：</p>
+<ul>
+<li>for t=1,2,&hellip;,T do
+<ul>
+<li>从$D$采样的$\mathcal{D}_{bs}$</li>
+<li>从划分属性采样得pro</li>
+<li>$h_t=\mathcal{E}(D,\mathcal{D}_{bs},pro)$</li>
+</ul>
+</li>
+<li>end for</li>
+</ul>
+<p>输出：</p>
+<ul>
+<li>$H(x)=argmax_{y \in \mathcal{Y}\sum_{t=1}^T\mathbb{I}(h_t(x)=y)}$</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+        
+            <a href="/tags/%E4%BD%9C%E4%B8%9A/">作业</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ]
+        });})
+</script>
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+     
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Wanderer Fantansy
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.4.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
