@@ -6,7 +6,23 @@
     <description>Recent content in 作业 on Wanderer Fantansy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 04 May 2022 21:37:00 +0200</lastBuildDate><atom:link href="https://wuzhizhe7273.github.io/categories/%E4%BD%9C%E4%B8%9A/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 May 2022 15:55:04 +0800</lastBuildDate><atom:link href="https://wuzhizhe7273.github.io/categories/%E4%BD%9C%E4%B8%9A/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深度学习作业1</title>
+      <link>https://wuzhizhe7273.github.io/p/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A1/</link>
+      <pubDate>Sun, 15 May 2022 15:55:04 +0800</pubDate>
+      
+      <guid>https://wuzhizhe7273.github.io/p/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A1/</guid>
+      <description>实验要求  能够对样本数据进行归一化处理； 能够设计深度神经网络模型； 能够分析神经网络中层的表征意义； 能够掌握模型的优化方法和评价指标； 总结  报告要求 给定mnist手写数字图像数据库，自行下载训练集和测试集。要求如下：
+ 对于测试集数据，完成分类预测，实验精度达到98%以上。 给出每个神经网络层的物理解释，阐述其表征意义。 绘制程序流程图（要求用visio制图） 源代码及必要注释 总结  程序流程图 读取MINST数据集 这里直接使用tensorflow的api来读取，tensorflow.keras.datasets.mnist是一个用来读取minist数据集的模块，调用时它会自动从https://storage.googleapis.com/tensorflow/tf-keras-datasets/minist.npz下载文件,.npz文件里保存了多个numpy数组。可以用numpy.load()读取，tensorflow直接用minist.load_data()完成这个过程。 读取出来的训练集形状为(60000,28,28),即有60000张$(28 \times 28)$的图片，每一位的数据是0-255的整数，训练集标签形状为(60000,),每一位的数据是0-9的整数,为与训练集数据对应的60000个标签。测试集里数据量为10000,其它方面与训练集相同。 读取代码如下：
+minist=tf.keras.datasets.mnist (x_train,y_train),(x_test,y_test)=minist.load_data() 训练集中前十张图片如下： 它们对应的标签如下：
+[5 0 4 1 9 2 1 3 1 4] 数据处理 处理目标是将图像数据转化为网络所要求的形状，将每一位的值缩放到[0,1]的区间，并将分类标签变为one-hot编码的形式。 首先要将数据从uint8形式转换到float32形式，再将其除以255，由于numpy的广播机制，矩阵中的每一个数据都会被除以255。然后将表示图像的维度展平，代码如下：
+x_train=x_train.astype(np.float32) x_test=x_test.astype(np.float32) x_train=x_train.reshape(-1,28*28)/255 x_test=x_test.reshape(-1,28*28)/255 转化后训练集第一张图部分数据如下图：
+接下来将标签变为one-hot形式： 只要利用tensorflow.one_hot就可以方便的将标签转为one_hot编码：
+y_train_onehot=tf.one_hot(y_train,10) y_test_onehot=tf.one_hot(y_test,10) 转换后的前十个标签如下：
+tf.Tensor( [[0. 0. 0. 0. 0. 1. 0. 0. 0. 0.] [1. 0. 0. 0. 0. 0. 0. 0. 0.</description>
+    </item>
+    
     <item>
       <title>机器学习作业2</title>
       <link>https://wuzhizhe7273.github.io/p/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A2/</link>
