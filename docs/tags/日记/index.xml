@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>日记 on Wanderer Fantansy</title>
+    <link>https://wuzhizhe7273.github.io/tags/%E6%97%A5%E8%AE%B0/</link>
+    <description>Recent content in 日记 on Wanderer Fantansy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 15 May 2022 15:05:49 +0800</lastBuildDate><atom:link href="https://wuzhizhe7273.github.io/tags/%E6%97%A5%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Note</title>
+      <link>https://wuzhizhe7273.github.io/p/note/</link>
+      <pubDate>Sun, 15 May 2022 15:05:49 +0800</pubDate>
+      
+      <guid>https://wuzhizhe7273.github.io/p/note/</guid>
+      <description>15日 关于新买来的U盘无法存储大文件这回事 碎碎念 几天前买的U盘到了，老实说现在我对这玩意其实没多大需求。今天想把wsl里的Ubuntu备份一下,毕竟这玩意配环境配了老久，在我热衷于把啥都往里面塞之后已经10个G了。打算wsl --export Ubuntu D:/export.tar之后上传到百度云，结果这垃圾玩意居然有上传大小限制，于是就想放U盘里结果提示文件过大。
+问题 查过之后发现是文件系统的问题，U盘的文件系统是FAT32，这玩意单个文件不能超过4G，将其转为NTFS就好了。转换命令是convert E:/fs:ntfs,这里的E:以后用的时候应改为插入电脑后现实的U盘盘符。
+资料搜集 关于FAT32和NTFS ntfs就目前而言，多用于台式机电脑、笔记本及平板电脑、移动硬盘等使用各种大中型空间容量的磁盘。 而fat32却是在U盘、内存卡等小型磁盘上使用比较多。 NTFS主要是针对传统机械硬盘而设计的，但是对于U盘或内存卡这种Flash 闪存材料却不适用。主要是NTFS分区是采用“日志式”的文件系统，这种格式会对U盘这种闪存储介质会造成较大的负担，会直接造成U盘容易损坏。 FAT16在dos及win95系统时广泛使用，不过其在容量上有很大的限制，分区无法超过2GB。 FAT32在WIN2000和XP系统中最大分区容量限制为2TB的容量。(2TB也就是2千兆) NTFS目前来说似乎没容量限制，只要硬盘空间容量有多大，那么就NTFS就可以分到多大。 FAT32在实际运行中不支持单个文件大于4GB的文件，一旦超过容量限制那么系统就会提示磁盘空间不足。 NTFS就目前来说已经突破了单个文件4GB的容量限制，现已经差不多完全替代fat32分区格式了，已在xp/win7/win8系统中广泛运用。 目前来说似乎没容量限制，只要硬盘空间容量有多大，那么就NTFS就可以分到多大。 和这个问题有关的也就需要这么多了，多的就不记了。
+16日 暂时留个空 </description>
+    </item>
+    
+  </channel>
+</rss>

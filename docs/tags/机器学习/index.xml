@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>机器学习 on Wanderer Fantansy</title>
-    <link>https://example.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+    <link>https://wuzhizhe7273.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
     <description>Recent content in 机器学习 on Wanderer Fantansy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 04 May 2022 21:37:00 +0200</lastBuildDate><atom:link href="https://example.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 04 May 2022 21:37:00 +0200</lastBuildDate><atom:link href="https://wuzhizhe7273.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>机器学习作业2</title>
-      <link>https://example.com/p/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A2/</link>
+      <link>https://wuzhizhe7273.github.io/p/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A2/</link>
       <pubDate>Wed, 04 May 2022 21:37:00 +0200</pubDate>
       
-      <guid>https://example.com/p/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A2/</guid>
+      <guid>https://wuzhizhe7273.github.io/p/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A2/</guid>
       <description>1.说明线性模型得原理和实现过程，涉及公式推导。 假定给定数据集$D={(x_i,y_i)}_{i=1}^m,x_i \in \mathbb{R}^N,y_i \in \mathbb{R}$,有$f(x_i)=w^Tx_i,w^T \in \mathbb{R}^m$.$f(x_i)$的值与$y_i$尽可能接近，我们称其为线性模型。$w^T$作为一个线性算子，对输入样本空间进行线性变换，将其映射到类别空间上，要求相似的样本在空间中距离更近，被分为一类。所以对于线性模型我们要求其输入样本在样本空间的分布是线性可分的。 对于线性模型来说，我们一般会有一个性能评估指标，如线性回归的均方误差，对数几率回归的对数似然，线性判别分析的广义瑞利商。这些性能评价指标就是我们模型的优化指标，我们要选择模型的参数使这些优化指标达到最优。在限制了优化指标的最优条件时，我们就可以通过数学优化的方法求得线性模型的参数。
 2.解释线性判别分析的原理，算法优缺点，可加图说明。 线性判别分析( Linear Discriminant Analysis,简称LDA)是一种经典的线性学习方法，它的基本思想是将样本投影到一条直线上，使同类样本尽可能近，不同类样本之间的距离尽可能远。前者对应同类样本的协方差尽可能小，后者对应不同样本类别的投影中心的距离尽可能大。 这里先定义几个符号：假设数据集为$D{(x_i,y_i)}{i=1}^m,y_i \in {0,1},x_i \in \mathbb{R}^m,m \in \mathbb{N}^+$那么有$X_i,\mu_i,\Sigma_i$分别表示$i \in {0,1}$类样本的集合，均值向量，协方差矩阵,投影方向为$w$那么我们的目的就变为让$w^T\Sigma_0w+w^T\Sigma_1w$尽可能小，$||w^T\mu_0-w^T\mu_1 ||{2}^{2}$尽可能大。整合一下目标变为$J=\frac{w^T(\mu_0-\mu_1)(\mu_0-\mu_1)^Tw}{w^T(\Sigma_0+\Sigma_1)w}$最大化。 如果我们定义$S_w=\Sigma_0+\Sigma_1$为类内散度矩阵，$S_b=(\mu_0-\mu_1)(\mu_0-\mu_1)^T$为类间散度矩阵，则可变换到$J=\frac{w^TS_bw}{w_TS_ww}$，这里的J为广义瑞利商(在第一题中提过)。 对于广义瑞利商，其优化目标为： $$ \begin{aligned} \underset{\pmb{w}}{min} \quad &amp;amp;-\pmb{w}^T\pmb{b}_b\pmb{w}\ s.t. \quad &amp;amp;\pmb{w}^T\pmb{S}_w\pmb{w}=1 \end{aligned} $$ 由拉格朗日乘子法可以求得$\pmb{S}_b\pmb{w}=\lambda\pmb{S}_w\pmb{w}$, $\pmb{S}_b\pmb{w}$的方向恒为$\pmb{\mu}_0-\pmb{\mu}_1$,则$\pmb{w}=\pmb{S}_w^{-1}(\pmb{\mu}_0-\pmb{\mu}_1)$。之后利用$\pmb{w}^T\pmb{\mu}$对特征向量进行投影即可。 优点：线性判别分析是有有监督的，能很好得反应样本间差异 缺点：局限性大，受样本种类限制，投影空间最多为n-1维。
 3.以前三层神经网络为例，说明误差逆传播算法的计算原理。

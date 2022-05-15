@@ -2,17 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Wanderer Fantansy</title>
-        <link>https://example.com/</link>
+        <link>https://wuzhizhe7273.github.io/</link>
         <description>Recent content on Wanderer Fantansy</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 04 May 2022 21:37:00 +0200</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 15 May 2022 15:05:49 +0800</lastBuildDate><atom:link href="https://wuzhizhe7273.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Note</title>
+        <link>https://wuzhizhe7273.github.io/p/note/</link>
+        <pubDate>Sun, 15 May 2022 15:05:49 +0800</pubDate>
+        
+        <guid>https://wuzhizhe7273.github.io/p/note/</guid>
+        <description>&lt;img src="https://wuzhizhe7273.github.io/image/%E6%B5%AA%E8%8A%B1%E5%B8%8C%E5%84%BF.jpeg" alt="Featured image of post Note" /&gt;&lt;h1 id=&#34;15日&#34;&gt;15日&lt;/h1&gt;
+&lt;h2 id=&#34;关于新买来的u盘无法存储大文件这回事&#34;&gt;关于新买来的U盘无法存储大文件这回事&lt;/h2&gt;
+&lt;h3 id=&#34;碎碎念&#34;&gt;碎碎念&lt;/h3&gt;
+&lt;p&gt;几天前买的U盘到了，老实说现在我对这玩意其实没多大需求。今天想把wsl里的Ubuntu备份一下,毕竟这玩意配环境配了老久，在我热衷于把啥都往里面塞之后已经10个G了。打算&lt;code&gt;wsl --export Ubuntu D:/export.tar&lt;/code&gt;之后上传到百度云，结果这垃圾玩意居然有上传大小限制，于是就想放U盘里结果提示文件过大。&lt;/p&gt;
+&lt;h3 id=&#34;问题&#34;&gt;问题&lt;/h3&gt;
+&lt;p&gt;查过之后发现是文件系统的问题，U盘的文件系统是FAT32，这玩意单个文件不能超过4G，将其转为NTFS就好了。转换命令是&lt;code&gt;convert E:/fs:ntfs&lt;/code&gt;,这里的E:以后用的时候应改为插入电脑后现实的U盘盘符。&lt;/p&gt;
+&lt;h3 id=&#34;资料搜集&#34;&gt;资料搜集&lt;/h3&gt;
+&lt;h4 id=&#34;关于fat32和ntfs&#34;&gt;关于FAT32和NTFS&lt;/h4&gt;
+&lt;p&gt;ntfs就目前而言，多用于台式机电脑、笔记本及平板电脑、移动硬盘等使用各种大中型空间容量的磁盘。
+而fat32却是在U盘、内存卡等小型磁盘上使用比较多。
+NTFS主要是针对传统机械硬盘而设计的，但是对于U盘或内存卡这种Flash 闪存材料却不适用。主要是NTFS分区是采用“日志式”的文件系统，这种格式会对U盘这种闪存储介质会造成较大的负担，会直接造成U盘容易损坏。
+FAT16在dos及win95系统时广泛使用，不过其在容量上有很大的限制，分区无法超过2GB。
+FAT32在WIN2000和XP系统中最大分区容量限制为2TB的容量。(2TB也就是2千兆)
+NTFS目前来说似乎没容量限制，只要硬盘空间容量有多大，那么就NTFS就可以分到多大。
+FAT32在实际运行中不支持单个文件大于4GB的文件，一旦超过容量限制那么系统就会提示磁盘空间不足。
+NTFS就目前来说已经突破了单个文件4GB的容量限制，现已经差不多完全替代fat32分区格式了，已在xp/win7/win8系统中广泛运用。
+目前来说似乎没容量限制，只要硬盘空间容量有多大，那么就NTFS就可以分到多大。
+和这个问题有关的也就需要这么多了，多的就不记了。&lt;/p&gt;
+&lt;h1 id=&#34;16日&#34;&gt;16日&lt;/h1&gt;
+&lt;h2 id=&#34;暂时留个空&#34;&gt;暂时留个空&lt;/h2&gt;
+</description>
+        </item>
+        <item>
         <title>机器学习作业2</title>
-        <link>https://example.com/p/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A2/</link>
+        <link>https://wuzhizhe7273.github.io/p/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A2/</link>
         <pubDate>Wed, 04 May 2022 21:37:00 +0200</pubDate>
         
-        <guid>https://example.com/p/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A2/</guid>
-        <description>&lt;img src="https://example.com/image/seele.png" alt="Featured image of post 机器学习作业2" /&gt;&lt;p&gt;&lt;strong&gt;1.说明线性模型得原理和实现过程，涉及公式推导。&lt;/strong&gt;
+        <guid>https://wuzhizhe7273.github.io/p/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A2/</guid>
+        <description>&lt;img src="https://wuzhizhe7273.github.io/image/seele.png" alt="Featured image of post 机器学习作业2" /&gt;&lt;p&gt;&lt;strong&gt;1.说明线性模型得原理和实现过程，涉及公式推导。&lt;/strong&gt;
 假定给定数据集$D={(x_i,y_i)}_{i=1}^m,x_i \in \mathbb{R}^N,y_i \in \mathbb{R}$,有$f(x_i)=w^Tx_i,w^T \in \mathbb{R}^m$.$f(x_i)$的值与$y_i$尽可能接近，我们称其为线性模型。$w^T$作为一个线性算子，对输入样本空间进行线性变换，将其映射到类别空间上，要求相似的样本在空间中距离更近，被分为一类。所以对于线性模型我们要求其输入样本在样本空间的分布是线性可分的。
 对于线性模型来说，我们一般会有一个性能评估指标，如线性回归的均方误差，对数几率回归的对数似然，线性判别分析的广义瑞利商。这些性能评价指标就是我们模型的优化指标，我们要选择模型的参数使这些优化指标达到最优。在限制了优化指标的最优条件时，我们就可以通过数学优化的方法求得线性模型的参数。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2.解释线性判别分析的原理，算法优缺点，可加图说明。&lt;/strong&gt;
@@ -31,7 +59,7 @@ $$
 缺点：局限性大，受样本种类限制，投影空间最多为n-1维。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3.以前三层神经网络为例，说明误差逆传播算法的计算原理。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;假设有一个三层神经网络，如下图:
-&lt;img src=&#34;https://example.com/image/MLhw/1.jpg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://wuzhizhe7273.github.io/image/MLhw/1.jpg&#34; alt=&#34;&#34;  /&gt;&lt;/p&gt;
 &lt;p&gt;对于训练样例$(\pmb{x}&lt;em&gt;k,\pmb{y}&lt;em&gt;k)$,假定输出为$\pmb{\hat{y}&lt;em&gt;k}=(\hat{y}&lt;em&gt;1^k,\hat{y}&lt;em&gt;2^k,\cdots,\hat{y}&lt;em&gt;l^k)$,即$\hat{\pmb{y}}&lt;em&gt;j^k=f(\beta_j-\theta_j)$,假设使用均方误差作为评估准则，$E_k=\frac{1}{2}\sum&lt;/em&gt;{j=1}^l(\hat{y}&lt;em&gt;j^k-y_j^k)^2$。
 对于误差，我们知道其在相对于各参数负梯度方向上下降最快，所以接下来我们要求误差相对于各参数的梯度，为简化计算，我们使用$w&lt;/em&gt;{hj},\theta_j,\upsilon&lt;/em&gt;{ih},\gamma_h$举例计算，其中$\theta_j,\gamma_h$分别代表输出层第$j$个神经元，隐含第$h$个神经元的阈值，也可以叫偏置。
 依据链式法则：
@@ -211,12 +239,13 @@ Bagging和随机森林都是基学习器为决策树的算法，随机森林对�
         </item>
         <item>
         <title>测试文章1</title>
-        <link>https://example.com/p/test1/</link>
+        <link>https://wuzhizhe7273.github.io/p/test1/</link>
         <pubDate>Mon, 10 Aug 2020 01:00:00 +0200</pubDate>
         
-        <guid>https://example.com/p/test1/</guid>
-        <description>&lt;img src="https://example.com/image/seele.png" alt="Featured image of post 测试文章1" /&gt;&lt;p&gt;这是测试文章1&lt;/p&gt;
+        <guid>https://wuzhizhe7273.github.io/p/test1/</guid>
+        <description>&lt;img src="https://wuzhizhe7273.github.io/image/seele.png" alt="Featured image of post 测试文章1" /&gt;&lt;p&gt;这是测试文章1&lt;/p&gt;
 &lt;h2 id=&#34;一级标题1&#34;&gt;一级标题1&lt;/h2&gt;
+&lt;p&gt;怎么没反应&lt;/p&gt;
 &lt;h3 id=&#34;二级标题1&#34;&gt;二级标题1&lt;/h3&gt;
 &lt;h3 id=&#34;二级标题2&#34;&gt;二级标题2&lt;/h3&gt;
 &lt;h2 id=&#34;一级标题2&#34;&gt;一级标题2&lt;/h2&gt;
@@ -224,20 +253,20 @@ Bagging和随机森林都是基学习器为决策树的算法，随机森林对�
         </item>
         <item>
         <title>测试文章2</title>
-        <link>https://example.com/p/test2/</link>
+        <link>https://wuzhizhe7273.github.io/p/test2/</link>
         <pubDate>Mon, 10 Aug 2020 01:00:00 +0200</pubDate>
         
-        <guid>https://example.com/p/test2/</guid>
-        <description>&lt;img src="https://example.com/image/seele.png" alt="Featured image of post 测试文章2" /&gt;&lt;p&gt;这是测试文章2&lt;/p&gt;
+        <guid>https://wuzhizhe7273.github.io/p/test2/</guid>
+        <description>&lt;img src="https://wuzhizhe7273.github.io/image/seele.png" alt="Featured image of post 测试文章2" /&gt;&lt;p&gt;这是测试文章2&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>测试文章3</title>
-        <link>https://example.com/p/test3/</link>
+        <link>https://wuzhizhe7273.github.io/p/test3/</link>
         <pubDate>Mon, 10 Aug 2020 01:00:00 +0200</pubDate>
         
-        <guid>https://example.com/p/test3/</guid>
-        <description>&lt;img src="https://example.com/image/seele.png" alt="Featured image of post 测试文章3" /&gt;&lt;p&gt;这是测试文章3&lt;/p&gt;
+        <guid>https://wuzhizhe7273.github.io/p/test3/</guid>
+        <description>&lt;img src="https://wuzhizhe7273.github.io/image/seele.png" alt="Featured image of post 测试文章3" /&gt;&lt;p&gt;这是测试文章3&lt;/p&gt;
 </description>
         </item>
         
