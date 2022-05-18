@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on Wanderer Fantansy</title>
+    <link>https://wuzhizhe7273.github.io/tags/python/</link>
+    <description>Recent content in python on Wanderer Fantansy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 16 May 2022 11:23:45 +0800</lastBuildDate><atom:link href="https://wuzhizhe7273.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Py Pathlib Note</title>
+      <link>https://wuzhizhe7273.github.io/p/py-pathlib-note/</link>
+      <pubDate>Mon, 16 May 2022 11:23:45 +0800</pubDate>
+      
+      <guid>https://wuzhizhe7273.github.io/p/py-pathlib-note/</guid>
+      <description>位于Lib/pathlib.py 是面向对象的文件系统路径，与之前的os.path功能相近，从文档来看，这个库主要是用来操作文件系统路径的，与直接操作路径的字符串相比，它可以屏蔽Unix和Windows的文件路径格式差异。网上说重要的是将os和path解耦，这个我不太懂。
+用法 基础使用 导入主类 from pathlib import Path 列出子目录 p=Path(&amp;#39;.&amp;#39;) [x for x in p.iterdir() if x.is_dir()] 列出目录树下指定类型文件 list(p.glob(&amp;#39;**/*.py&amp;#39;)) 查询路径属性 p.exists() p.is_dir() </description>
+    </item>
+    
+  </channel>
+</rss>

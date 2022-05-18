@@ -6,7 +6,27 @@
     <description>Recent content in Posts on Wanderer Fantansy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 15 May 2022 15:55:04 +0800</lastBuildDate><atom:link href="https://wuzhizhe7273.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 May 2022 11:23:45 +0800</lastBuildDate><atom:link href="https://wuzhizhe7273.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Py Pathlib Note</title>
+      <link>https://wuzhizhe7273.github.io/p/py-pathlib-note/</link>
+      <pubDate>Mon, 16 May 2022 11:23:45 +0800</pubDate>
+      
+      <guid>https://wuzhizhe7273.github.io/p/py-pathlib-note/</guid>
+      <description>位于Lib/pathlib.py 是面向对象的文件系统路径，与之前的os.path功能相近，从文档来看，这个库主要是用来操作文件系统路径的，与直接操作路径的字符串相比，它可以屏蔽Unix和Windows的文件路径格式差异。网上说重要的是将os和path解耦，这个我不太懂。
+用法 基础使用 导入主类 from pathlib import Path 列出子目录 p=Path(&amp;#39;.&amp;#39;) [x for x in p.iterdir() if x.is_dir()] 列出目录树下指定类型文件 list(p.glob(&amp;#39;**/*.py&amp;#39;)) 查询路径属性 p.exists() p.is_dir() </description>
+    </item>
+    
+    <item>
+      <title>深度学习实验2</title>
+      <link>https://wuzhizhe7273.github.io/p/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C2/</link>
+      <pubDate>Mon, 16 May 2022 10:16:03 +0800</pubDate>
+      
+      <guid>https://wuzhizhe7273.github.io/p/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C2/</guid>
+      <description>实验指导  读取猫狗分类数据集 从kaggle在线网站中下载猫狗分类数据集（https://www.kaggle.com/c/dogs-vs-cats/data），这个数据集包含25000张猫狗图像（每个类别都有12500张），大小为543MB（压缩后）。下载数据并解压之后，你需要创建一个新数据集，其中包含三个子集：每个类别各1000个样本的训练集、每个类别各500个样本的验证集和每个类别各500个样本的测试集。 数据预处理 首先，将数据分为“train”文件夹、“test”文件夹、“validation”文件夹；每个文件夹内分别包含以“cat”和“dog”命名的两个文件夹；train文件夹中， cat”和“dog”类别各有1000个样本；test和validation文件夹中，“cat”和“dog”类别各有500个样本。 其次，由于数据以JPEG文件的形式保存在硬盘中，在将数据输入CNN之前，应该将数据格式化为经过预处理的浮点数张量，预处理步骤大致如下：  读取图像文件； 将JPEG文件解码为RGB像素网格； 将这些像素网格转换为浮点数张量； 将像素值（0~255范围内）缩放到[0, 1]区间（正如你所知，神经网络喜欢处理较小的输入值）。 最后，需要将每张图片的大小限定为150*150像素点大小，且将数据按批次（batch）输入模型，批次大小（batch_size）自定义；另外，需要将标签离散化。   构建模型 设计模型卷积层的个数，每一层卷积核的个数，每层的激活函数以及是否含有池化层，最后一层是输出层，它是一个包含两个神经元的softmax层，将返回一个由2个概率值（总和为1）组成的数组。每个概率值表示当前彩色图像属于猫狗中某一个类别的概率。 确定编译参数 对模型进行编译，需要设置以下三个参数：  损失函数：网络如何衡量在训练数据上的性能，即网络如何朝着正确的方向前进。 优化器：基于训练数据和损失函数来更新网络的机制。 评价指标：在训练和测试过程中需要监控的指标包括准确率、精度、召回率等。   模型的训练  将训练数据输入神经网络； 网络学习将图像和标签关联在一起； 将测试数据输入已训练模型，验证预测结果与真实标签是否匹配。    实验内容 给定猫狗分类数据集，自行下载训练集和测试集。要求如下：
+ 对于测试集数据，完成分类预测，实验精度达到85%以上； 给出每层卷积核的物理解释，阐述其表征意义； 绘制程序流程图（要求用visio制图）； 源代码及必要注释； 总结  报告要求  写出该流程的流程图，以及各个流程快的可视化代码和源代码，以及流程运行过程。 写出实验的心得与体会。  </description>
+    </item>
+    
     <item>
       <title>深度学习作业1</title>
       <link>https://wuzhizhe7273.github.io/p/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A1/</link>

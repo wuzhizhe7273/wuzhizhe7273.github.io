@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='实验指导  读取猫狗分类数据集 从kaggle在线网站中下载猫狗分类数据集（https://www.kaggle.com/c/dogs-vs-cats/data），这个数据集包含25000张猫狗图像（每个类别都有12500张），大小为543MB（压缩后）。下载数据并解压之后，你需要创建一个新数据集，其中包含三个子集：每个类别各1000个样本的训练集、每个类别各500个样本的验证集和每个类别各500个样本的测试集。 数据预处理 首先，将数据分为“train”文件夹、“test”文件夹、“validation”文件夹；每个文件夹内分别包含以“cat”和“dog”命名的两个文件夹；train文件夹中， cat”和“dog”类别各有1000个样本；test和validation文件夹中，“cat”和“dog”类别各有500个样本。 其次，由于数据以JPEG文件的形式保存在硬盘中，在将数据输入CNN之前，应该将数据格式化为经过预处理的浮点数张量，预处理步骤大致如下：  读取图像文件； 将JPEG文件解码为RGB像素网格； 将这些像素网格转换为浮点数张量； 将像素值（0~255范围内）缩放到[0, 1]区间（正如你所知，神经网络喜欢处理较小的输入值）。 最后，需要将每张图片的大小限定为150*150像素点大小，且将数据按批次（batch）输入模型，批次大小（batch_size）自定义；另外，需要将标签离散化。   构建模型 设计模型卷积层的个数，每一层卷积核的个数，每层的激活函数以及是否含有池化层，最后一层是输出层，它是一个包含两个神经元的softmax层，将返回一个由2个概率值（总和为1）组成的数组。每个概率值表示当前彩色图像属于猫狗中某一个类别的概率。 确定编译参数 对模型进行编译，需要设置以下三个参数：  损失函数：网络如何衡量在训练数据上的性能，即网络如何朝着正确的方向前进。 优化器：基于训练数据和损失函数来更新网络的机制。 评价指标：在训练和测试过程中需要监控的指标包括准确率、精度、召回率等。   模型的训练  将训练数据输入神经网络； 网络学习将图像和标签关联在一起； 将测试数据输入已训练模型，验证预测结果与真实标签是否匹配。    实验内容 给定猫狗分类数据集，自行下载训练集和测试集。要求如下：
+ 对于测试集数据，完成分类预测，实验精度达到85%以上； 给出每层卷积核的物理解释，阐述其表征意义； 绘制程序流程图（要求用visio制图）； 源代码及必要注释； 总结  报告要求  写出该流程的流程图，以及各个流程快的可视化代码和源代码，以及流程运行过程。 写出实验的心得与体会。  '><title>深度学习实验2</title>
+
+<link rel='canonical' href='https://wuzhizhe7273.github.io/p/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C2/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='深度学习实验2'>
+<meta property='og:description' content='实验指导  读取猫狗分类数据集 从kaggle在线网站中下载猫狗分类数据集（https://www.kaggle.com/c/dogs-vs-cats/data），这个数据集包含25000张猫狗图像（每个类别都有12500张），大小为543MB（压缩后）。下载数据并解压之后，你需要创建一个新数据集，其中包含三个子集：每个类别各1000个样本的训练集、每个类别各500个样本的验证集和每个类别各500个样本的测试集。 数据预处理 首先，将数据分为“train”文件夹、“test”文件夹、“validation”文件夹；每个文件夹内分别包含以“cat”和“dog”命名的两个文件夹；train文件夹中， cat”和“dog”类别各有1000个样本；test和validation文件夹中，“cat”和“dog”类别各有500个样本。 其次，由于数据以JPEG文件的形式保存在硬盘中，在将数据输入CNN之前，应该将数据格式化为经过预处理的浮点数张量，预处理步骤大致如下：  读取图像文件； 将JPEG文件解码为RGB像素网格； 将这些像素网格转换为浮点数张量； 将像素值（0~255范围内）缩放到[0, 1]区间（正如你所知，神经网络喜欢处理较小的输入值）。 最后，需要将每张图片的大小限定为150*150像素点大小，且将数据按批次（batch）输入模型，批次大小（batch_size）自定义；另外，需要将标签离散化。   构建模型 设计模型卷积层的个数，每一层卷积核的个数，每层的激活函数以及是否含有池化层，最后一层是输出层，它是一个包含两个神经元的softmax层，将返回一个由2个概率值（总和为1）组成的数组。每个概率值表示当前彩色图像属于猫狗中某一个类别的概率。 确定编译参数 对模型进行编译，需要设置以下三个参数：  损失函数：网络如何衡量在训练数据上的性能，即网络如何朝着正确的方向前进。 优化器：基于训练数据和损失函数来更新网络的机制。 评价指标：在训练和测试过程中需要监控的指标包括准确率、精度、召回率等。   模型的训练  将训练数据输入神经网络； 网络学习将图像和标签关联在一起； 将测试数据输入已训练模型，验证预测结果与真实标签是否匹配。    实验内容 给定猫狗分类数据集，自行下载训练集和测试集。要求如下：
+ 对于测试集数据，完成分类预测，实验精度达到85%以上； 给出每层卷积核的物理解释，阐述其表征意义； 绘制程序流程图（要求用visio制图）； 源代码及必要注释； 总结  报告要求  写出该流程的流程图，以及各个流程快的可视化代码和源代码，以及流程运行过程。 写出实验的心得与体会。  '>
+<meta property='og:url' content='https://wuzhizhe7273.github.io/p/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C2/'>
+<meta property='og:site_name' content='Wanderer Fantansy'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='深度学习' /><meta property='article:tag' content='图像分类' /><meta property='article:published_time' content='2022-05-16T10:16:03&#43;08:00'/><meta property='article:modified_time' content='2022-05-16T10:16:03&#43;08:00'/><meta property='og:image' content='https://wuzhizhe7273.github.io/image/%E6%B5%AA%E8%8A%B1%E5%B8%8C%E5%84%BF.jpeg' />
+<meta name="twitter:title" content="深度学习实验2">
+<meta name="twitter:description" content="实验指导  读取猫狗分类数据集 从kaggle在线网站中下载猫狗分类数据集（https://www.kaggle.com/c/dogs-vs-cats/data），这个数据集包含25000张猫狗图像（每个类别都有12500张），大小为543MB（压缩后）。下载数据并解压之后，你需要创建一个新数据集，其中包含三个子集：每个类别各1000个样本的训练集、每个类别各500个样本的验证集和每个类别各500个样本的测试集。 数据预处理 首先，将数据分为“train”文件夹、“test”文件夹、“validation”文件夹；每个文件夹内分别包含以“cat”和“dog”命名的两个文件夹；train文件夹中， cat”和“dog”类别各有1000个样本；test和validation文件夹中，“cat”和“dog”类别各有500个样本。 其次，由于数据以JPEG文件的形式保存在硬盘中，在将数据输入CNN之前，应该将数据格式化为经过预处理的浮点数张量，预处理步骤大致如下：  读取图像文件； 将JPEG文件解码为RGB像素网格； 将这些像素网格转换为浮点数张量； 将像素值（0~255范围内）缩放到[0, 1]区间（正如你所知，神经网络喜欢处理较小的输入值）。 最后，需要将每张图片的大小限定为150*150像素点大小，且将数据按批次（batch）输入模型，批次大小（batch_size）自定义；另外，需要将标签离散化。   构建模型 设计模型卷积层的个数，每一层卷积核的个数，每层的激活函数以及是否含有池化层，最后一层是输出层，它是一个包含两个神经元的softmax层，将返回一个由2个概率值（总和为1）组成的数组。每个概率值表示当前彩色图像属于猫狗中某一个类别的概率。 确定编译参数 对模型进行编译，需要设置以下三个参数：  损失函数：网络如何衡量在训练数据上的性能，即网络如何朝着正确的方向前进。 优化器：基于训练数据和损失函数来更新网络的机制。 评价指标：在训练和测试过程中需要监控的指标包括准确率、精度、召回率等。   模型的训练  将训练数据输入神经网络； 网络学习将图像和标签关联在一起； 将测试数据输入已训练模型，验证预测结果与真实标签是否匹配。    实验内容 给定猫狗分类数据集，自行下载训练集和测试集。要求如下：
+ 对于测试集数据，完成分类预测，实验精度达到85%以上； 给出每层卷积核的物理解释，阐述其表征意义； 绘制程序流程图（要求用visio制图）； 源代码及必要注释； 总结  报告要求  写出该流程的流程图，以及各个流程快的可视化代码和源代码，以及流程运行过程。 写出实验的心得与体会。  "><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://wuzhizhe7273.github.io/image/%E6%B5%AA%E8%8A%B1%E5%B8%8C%E5%84%BF.jpeg' />
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="https://wuzhizhe7273.github.io" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>返回</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C2/">
+                
+                    <img src="/image/%e6%b5%aa%e8%8a%b1%e5%b8%8c%e5%84%bf.jpeg" loading="lazy" alt="Featured image of post 深度学习实验2" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E4%BD%9C%E4%B8%9A/" >
+                作业
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AE%9E%E9%AA%8C2/">深度学习实验2</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">May 16, 2022</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="实验指导">实验指导</h2>
+<ul>
+<li>读取猫狗分类数据集
+从kaggle在线网站中下载猫狗分类数据集（https://www.kaggle.com/c/dogs-vs-cats/data），这个数据集包含25000张猫狗图像（每个类别都有12500张），大小为543MB（压缩后）。下载数据并解压之后，你需要创建一个新数据集，其中包含三个子集：每个类别各1000个样本的训练集、每个类别各500个样本的验证集和每个类别各500个样本的测试集。</li>
+<li>数据预处理
+首先，将数据分为“train”文件夹、“test”文件夹、“validation”文件夹；每个文件夹内分别包含以“cat”和“dog”命名的两个文件夹；train文件夹中， cat”和“dog”类别各有1000个样本；test和validation文件夹中，“cat”和“dog”类别各有500个样本。
+其次，由于数据以JPEG文件的形式保存在硬盘中，在将数据输入CNN之前，应该将数据格式化为经过预处理的浮点数张量，预处理步骤大致如下：
+<ul>
+<li>读取图像文件；</li>
+<li>将JPEG文件解码为RGB像素网格；</li>
+<li>将这些像素网格转换为浮点数张量；</li>
+<li>将像素值（0~255范围内）缩放到[0, 1]区间（正如你所知，神经网络喜欢处理较小的输入值）。</li>
+<li>最后，需要将每张图片的大小限定为150*150像素点大小，且将数据按批次（batch）输入模型，批次大小（batch_size）自定义；另外，需要将标签离散化。</li>
+</ul>
+</li>
+<li>构建模型
+设计模型卷积层的个数，每一层卷积核的个数，每层的激活函数以及是否含有池化层，最后一层是输出层，它是一个包含两个神经元的softmax层，将返回一个由2个概率值（总和为1）组成的数组。每个概率值表示当前彩色图像属于猫狗中某一个类别的概率。</li>
+<li>确定编译参数
+对模型进行编译，需要设置以下三个参数：
+<ul>
+<li>损失函数：网络如何衡量在训练数据上的性能，即网络如何朝着正确的方向前进。</li>
+<li>优化器：基于训练数据和损失函数来更新网络的机制。</li>
+<li>评价指标：在训练和测试过程中需要监控的指标包括准确率、精度、召回率等。</li>
+</ul>
+</li>
+<li>模型的训练
+<ul>
+<li>将训练数据输入神经网络；</li>
+<li>网络学习将图像和标签关联在一起；</li>
+<li>将测试数据输入已训练模型，验证预测结果与真实标签是否匹配。</li>
+</ul>
+</li>
+</ul>
+<h2 id="实验内容">实验内容</h2>
+<p>给定猫狗分类数据集，自行下载训练集和测试集。要求如下：</p>
+<ol>
+<li>对于测试集数据，完成分类预测，实验精度达到85%以上；</li>
+<li>给出每层卷积核的物理解释，阐述其表征意义；</li>
+<li>绘制程序流程图（要求用visio制图）；</li>
+<li>源代码及必要注释；</li>
+<li>总结</li>
+</ol>
+<h2 id="报告要求">报告要求</h2>
+<ol>
+<li>写出该流程的流程图，以及各个流程快的可视化代码和源代码，以及流程运行过程。</li>
+<li>写出实验的心得与体会。</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>
+        
+            <a href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/">图像分类</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">相关文章</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/p/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A1/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/image/%e6%b5%aa%e8%8a%b1%e5%b8%8c%e5%84%bf.jpeg" loading="lazy" data-key="深度学习作业1" data-hash="/image/浪花希儿.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">深度学习作业1</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BD%9C%E4%B8%9A2/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/image/seele.png" loading="lazy" data-key="机器学习作业2" data-hash="/image/seele.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">机器学习作业2</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+     
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2022 Wanderer Fantansy
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.4.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">目录</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#实验指导">实验指导</a></li>
+    <li><a href="#实验内容">实验内容</a></li>
+    <li><a href="#报告要求">报告要求</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
